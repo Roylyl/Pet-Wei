@@ -1,4 +1,4 @@
-> **Codex 自动安装提示词：** 请从 GitHub 仓库 https://github.com/Roylyl/Pet-Wei 安装名为“维基吧”的 Codex 自定义宠物。先读取并检查仓库中的 `pet.json` 与 `spritesheet.webp`，确认 `id` 为 `weijiba`、`spriteVersionNumber` 为 `2`、精灵图尺寸为 `1536×2288`；然后把这两个文件复制到当前用户的 Codex 宠物目录 `<CODEX_HOME>/pets/weijiba/`（未单独配置 `CODEX_HOME` 时使用 `~/.codex/pets/weijiba/`）。如果同名宠物已经存在，只更新 `weijiba` 目录并保留可恢复备份，不要改动其他宠物。安装完成后验证两个文件均存在、配置中的 `spritesheetPath` 能解析到 `spritesheet.webp`，并告诉我是否需要重启 Codex 才能显示。
+> **Codex 自动安装提示词：** 请从 GitHub 仓库 https://github.com/Roylyl/Pet-Wei 安装名为“维基吧”的 Codex 自定义宠物。先读取并检查仓库中的 `pet.json` 与 `spritesheet.webp`，确认 `id` 为 `weijiba`、`spriteVersionNumber` 为 `2`、精灵图尺寸为 `1536×2288`；然后把这两个文件连同 `LICENSE` 复制到当前用户的 Codex 宠物目录 `<CODEX_HOME>/pets/weijiba/`（未单独配置 `CODEX_HOME` 时使用 `~/.codex/pets/weijiba/`）。如果同名宠物已经存在，只更新 `weijiba` 目录并保留可恢复备份，不要改动其他宠物。安装完成后验证两个运行文件及 `LICENSE` 均存在、配置中的 `spritesheetPath` 能解析到 `spritesheet.webp`，并告诉我是否需要重启 Codex 才能显示。
 
 <div align="center">
 
@@ -15,7 +15,7 @@
 [![Stars](https://img.shields.io/github/stars/Roylyl/Pet-Wei?style=flat-square)](https://github.com/Roylyl/Pet-Wei/stargazers)
 [![Forks](https://img.shields.io/github/forks/Roylyl/Pet-Wei?style=flat-square)](https://github.com/Roylyl/Pet-Wei/forks)
 [![Open Issues](https://img.shields.io/github/issues/Roylyl/Pet-Wei?style=flat-square)](https://github.com/Roylyl/Pet-Wei/issues)
-[![License](https://img.shields.io/github/license/Roylyl/Pet-Wei?style=flat-square)](LICENSE)
+[![License: GPL-3.0-only](https://img.shields.io/badge/license-GPL--3.0--only-2563eb?style=flat-square)](LICENSE)
 [![Repo Size](https://img.shields.io/github/repo-size/Roylyl/Pet-Wei?style=flat-square)](https://github.com/Roylyl/Pet-Wei)
 [![Last Commit](https://img.shields.io/github/last-commit/Roylyl/Pet-Wei?style=flat-square)](https://github.com/Roylyl/Pet-Wei/commits/main)
 
@@ -82,12 +82,13 @@ Pet-Wei 是面向 Codex 桌面应用的 v2 自定义动画宠物。角色「维�
 
 安装完成后，如果宠物选择器没有立即显示「维基吧」，请完全退出并重新打开 Codex，让应用重新扫描自定义宠物目录。
 
-安装成功时，目标目录应只需包含以下两个运行文件：
+安装后，目标目录包含两个运行文件与许可证：
 
 ```text
 <CODEX_HOME>/pets/weijiba/
 ├── pet.json
-└── spritesheet.webp
+├── spritesheet.webp
+└── LICENSE
 ```
 
 ## 手动安装
@@ -105,17 +106,18 @@ if [ -d "$PET_DEST" ]; then
   echo "Existing pet backed up to: $PET_BACKUP"
 fi
 mkdir -p "$PET_DEST"
-cp pet.json spritesheet.webp "$PET_DEST/"
+cp pet.json spritesheet.webp LICENSE "$PET_DEST/"
 ```
 
 ### 从 Release 下载
 
-如果 [Releases](https://github.com/Roylyl/Pet-Wei/releases) 页面提供发行包，可下载并解压，然后将 `pet.json` 和 `spritesheet.webp` 放入：
+如果 [Releases](https://github.com/Roylyl/Pet-Wei/releases) 页面提供发行包，可下载并解压，然后将 `pet.json`、`spritesheet.webp` 和 `LICENSE` 放入：
 
 ```text
 <CODEX_HOME>/pets/weijiba/
 ├── pet.json
-└── spritesheet.webp
+├── spritesheet.webp
+└── LICENSE
 ```
 
 未单独配置 `CODEX_HOME` 时，macOS 和常见 Unix 环境中的默认位置是 `~/.codex/pets/weijiba/`。
@@ -198,7 +200,7 @@ Pet-Wei/
     └── look-directions.png
 ```
 
-Codex 实际安装只需要根目录中的 `pet.json` 和 `spritesheet.webp`。`assets` 目录中的文件用于 GitHub 展示和人工检查，不需要复制到 Codex 宠物目录。
+Codex 运行读取根目录中的 `pet.json` 和 `spritesheet.webp`，安装包同时保留 `LICENSE`。`assets` 目录中的文件用于 GitHub 展示和人工检查，不需要复制到 Codex 宠物目录。
 
 ## 隐私与安全
 
@@ -208,7 +210,7 @@ Codex 实际安装只需要根目录中的 `pet.json` 和 `spritesheet.webp`。`
 
 ## 版本发布
 
-建议每个公开版本使用语义化标签，例如 `v1.0.0`，并在 GitHub Release 中附加一个仅包含 `pet.json` 和 `spritesheet.webp` 的 `weijiba` 压缩包。创建 Release 后，README 顶部的版本号与下载量徽章会自动更新。
+建议每个公开版本使用语义化标签，例如 `v1.0.0`，并在 GitHub Release 中附加一个包含 `pet.json`、`spritesheet.webp` 和 `LICENSE` 的 `weijiba` 压缩包。创建 Release 后，README 顶部的版本号与下载量徽章会自动更新。
 
 ## 贡献与支持
 
@@ -216,6 +218,6 @@ Codex 实际安装只需要根目录中的 `pet.json` 和 `spritesheet.webp`。`
 
 ## 许可
 
-本项目使用 [MIT License](LICENSE) 发布。
+本项目原创内容采用 [GNU General Public License v3.0](LICENSE)（`GPL-3.0-only`，仅第 3 版）发布。Copyright © 2026 Roylyl。第三方内容保留各自的版权与许可声明。
 
-角色图像、宠物配置和随附文档均按仓库许可证提供；使用者应自行确保其二次发布、修改或商业使用符合所在地区的适用法律与平台规则。
+角色图像、宠物配置和随附文档均按仓库许可证提供；再分发时附带 `LICENSE` 并保留版权声明。使用者应自行确保其二次发布、修改或商业使用符合所在地区的适用法律与平台规则。
